@@ -23,15 +23,14 @@ sns.set(style='whitegrid')
 df = pd.read_csv('BankChurners.csv')
 
 # Drop irrelevant columns (e.g., customer ID, unused columns)
-df.drop(['CLIENTNUM', 'Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon',
-         'Naive_Bayes_Classifier_Attrition_Flag_Income_Category_Months_Inactive_12_mon'], axis=1, inplace=True, errors='ignore')
+df = df.drop(['CLIENTNUM', 'Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon',
+         'Naive_Bayes_Classifier_Attrition_Flag_Income_Category_Months_Inactive_12_mon', 'Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_1', 'Naive_Bayes_Classifier_Attrition_Flag_Card_Category_Contacts_Count_12_mon_Dependent_count_Education_Level_Months_Inactive_12_mon_2'], axis=1, errors='ignore')
 
 # === 3. BASIC CLEANING ===
 if 'Attrition_Flag' in df.columns:
     df['Churn'] = df['Attrition_Flag'].apply(lambda x: 1 if x == 'Attrited Customer' else 0)
 df.drop('Attrition_Flag', axis=1, inplace=True)
 
-# === 4. EDA Skipped for Streamlit ===
 
 # === 5. FEATURE ENGINEERING ===
 if 'Total_Revolving_Bal' in df.columns and 'Credit_Limit' in df.columns:
