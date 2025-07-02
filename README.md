@@ -1,4 +1,4 @@
-# # Credit Card Churn Prediction
+# Credit Card Churn Prediction
 A complete end-to-end machine learning project to identify potential customer churn in credit card usage. The project covers data preprocessing, model training, SHAP-based feature selection, fairness evaluation, and deployment on a cloud platform.
 
 # 1. Objective
